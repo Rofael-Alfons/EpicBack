@@ -2,18 +2,20 @@ const express = require("express");
 var router = express();
 
 var AdminModel = require("../models/admin");
-const {login} = require("../controllers/admin");
+const { login } = require("../controllers/admin");
 
-router.get("/", async(req, res, next) => {   // get all admins
-  try{
-    var AdminList=await AdminModel.find();
-    res.status(200).json(AdminList)
-  }catch(err){
+router.get("/", async (req, res, next) => {
+  // get all admins
+  try {
+    var AdminList = await AdminModel.find();
+    res.status(200).json(AdminList);
+  } catch (err) {
     res.status(422).json({ message: err.message });
   }
 });
 
-router.post("/", async (req, res, next) => {   // create admin
+router.post("/", async (req, res, next) => {
+  // create admin
   try {
     var Admin = req.body;
     var savedAdmin = await AdminModel.create(Admin);
@@ -23,7 +25,8 @@ router.post("/", async (req, res, next) => {   // create admin
   }
 });
 
-router.delete("/:id", async (req, res) => {   // delete admin
+router.delete("/:id", async (req, res) => {
+  // delete admin
   var id = req.params.id;
   try {
     var deletedAdmin = await AdminModel.deleteOne({ _id: id });
