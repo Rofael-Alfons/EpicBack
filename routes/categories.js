@@ -3,7 +3,7 @@ var router = express();
 const Category = require("../models/categories");
 
 const { auth } = require('../middlewares/auth')
-router.use(auth)
+// router.use(auth)
 
 
 router.get("/", async (req, res) => {   // get all categories
