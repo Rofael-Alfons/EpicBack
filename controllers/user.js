@@ -249,14 +249,14 @@ async function login(req, res) {
   if (user) {
     var valid = bcrypt.compareSync(password, user.password);
     if (valid) {
-      var token = jwt.sign(
-        {
-          userId: user._id,
-          displayName: user.displayName,
-        },
-        process.env.SECRET
-      );
-      res.status(200).json({ token, user });
+      // var token = jwt.sign(
+      //   {
+      //     userId: user._id,
+      //     displayName: user.displayName,
+      //   },
+      //   process.env.SECRET
+      // );
+      res.status(200).json({ user });
     } else {
       res.status(401).json({ message: "Invalid email or password" });
     }

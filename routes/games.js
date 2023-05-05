@@ -18,7 +18,7 @@ const categoryModel = require("../models/categories");
 
 const { auth } = require("../middlewares/auth");
 
-// router.use(auth)
+// router.use(auth);
 
 router.get("/:id", async (req, res) => {
   // get game by id
